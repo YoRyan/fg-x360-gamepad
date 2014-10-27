@@ -280,15 +280,6 @@
                         <dialog-name>autopilot</dialog-name>
                 </binding>
         </button>
-        <button n="8">
-                <desc>Xbox - cycle HUD</desc>
-                <binding>
-                        <command>nasal</command>
-                        <script><![CDATA[
-                                aircraft.HUD.cycle_color();
-                        ]]></script>
-                </binding>
-        </button>
         <button n="7">
                 <desc>Start - open map</desc>
                 <binding>
