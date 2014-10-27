@@ -70,7 +70,6 @@ addcommand("x360-rudder-left-axis", func (node) {
 var _update = func () {
         _updateThrottle();
         _updateView();
-        # Disable this on Windows.
         _updateRudder();
         settimer(_update, 0);
 };
