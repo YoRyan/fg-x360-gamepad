@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+        <name>Controller (XBOX 360 For Windows)</name>
+        <!-- Left thumbstick -->
+        <axis n="0">
+                <desc>Left thumbstick lateral - aileron</desc>
+                <dead-band type="double">0.1</dead-band>
+                <binding>
+                        <command>property-scale</command>
+                        <property>/controls/flight/aileron</property>
+                        <factor type="double">1</factor>
+                </binding>
+        </axis>
+        <axis n="1">
+                <desc>Left thumbstick vertical - elevator</desc>
+                <dead-band type="double">0.1</dead-band>
+                <binding>
+                        <condition>
+                                <not>
+                                        <property>/input/x360/shifted</property>
+                                </not>
+                        </condition>
+                        <command>property-scale</command>
+                        <property>/controls/flight/elevator</property>
+                        <factor type="double">-1</factor>
+                </binding>
+                <binding>
+                        <condition>
+                                <property>/input/x360/shifted</property>
+                        </condition>
+                        <command>x360-view-zoom-axis</command>
+                </binding>
+        </axis>
+        <!-- Right thumbstick -->
+        <axis n="4">
+                <desc>Right thumbstick lateral - rudder</desc>
+                <dead-band type="double">0.1</dead-band>
+                <!--binding>
+                        <condition>
+                                <not>
+                                        <property>/input/x360/shifted</property>
+                                </not>
+                        </condition>
+                        <command>property-scale</command>
+                        <property>/controls/flight/rudder</property>
+                        <factor type="double">1</factor>
+                </binding-->
+                <binding>
+                        <condition>
+                                <property>/input/x360/shifted</property>
+                        </condition>
+                        <command>x360-view-heading-axis</command>
+                </binding>
+        </axis>
+        <axis n="3">
+                <desc>Right thumbstick vertical - throttle</desc>
+                <dead-band type="double">0.1</dead-band>
+                <binding>
+                        <condition>
+                                <not>
+                                        <property>/input/x360/shifted</property>
+                                </not>
+                        </condition>
+                        <command>x360-throttle-axis</command>
+                </binding>
+                <binding>
+                        <condition>
+                                <property>/input/x360/shifted</property>
+                        </condition>
+                        <command>x360-view-pitch-axis</command>
+                </binding>
+        </axis>
+        <button n="9">
+                <desc>Right thumbstick hold - center view</desc>
+                <binding>
+                        <condition>
+                                <property>/input/x360/shifted</property>
+                        </condition>
+                        <command>property-assign</command>
+                        <property>/sim/current-view/goal-heading-offset-deg</property>
+                        <value type="double">0</value>
+                </binding>
+                <binding>
+                        <condition>
+                                <property>/input/x360/shifted</property>
+                        </condition>
+                        <command>property-assign</command>
+                        <property>/sim/current-view/goal-pitch-offset-deg</property>
+                        <value type="double">0</value>
+                </binding>
+                <binding>
+                        <condition>
+                                <property>/input/x360/shifted</property>
+                        </condition>
+                        <command>property-assign</command>
+                        <property>/sim/current-view/field-of-view</property>
+                        <value type="double">70</value>
+                </binding>
+        </button>
+        <!-- Triggers -->
+        <axis n="2">
+                <desc>Triggers - rudder</desc>
+                <binding>
+                        <command>property-scale</command>
+                        <property>/controls/flight/rudder</property>
+                        <factor type="double">-1</factor>
+                </binding>
+        </axis>
+        <!-- D-pad -->
+        <axis n="6">
+                <desc>D-pad lateral - cycle views</desc>
+                <low>
+                        <binding>
+                                <command>nasal</command>
+                                <script><![CDATA[
+                                        view.stepView(-1);
+                                ]]></script>
+                        </binding>
+                </low>
+                <high>
+                        <binding>
+                                <command>nasal</command>
+                                <script><![CDATA[
+                                        view.stepView(1);
+                                ]]></script>
+                        </binding>
+                </high>
+        </axis>
+        <axis n="7">
+                <desc>D-pad vertical - flaps</desc>
+                <high>
+                        <binding>
+                                <command>nasal</command>
+                                <script><![CDATA[
+                                        controls.flapsDown(-1);
+                                ]]></script>
+                        </binding>
+                </high>
+                <low>
+                        <binding>
+                                <command>nasal</command>
+                                <script><![CDATA[
+                                        controls.flapsDown(1);
+                                ]]></script>
+                        </binding>
+                </low>
+        </axis>
+        <!-- Bumpers -->
+        <button n="4">
+                <desc>Left bumper - shifter</desc>
+                <binding>
+                        <command>property-assign</command>
+                        <property>/input/x360/shifted</property>
+                        <value type="bool">true</value>
+                </binding>
+                <mod-up>
+                        <binding>
+                                <command>property-assign</command>
+                                <property>/input/x360/shifted</property>
+                                <value type="bool">false</value>
+                        </binding>
+                </mod-up>
+        </button>
+        <button n="5">
+                <desc>Right bumper - gear/parking brake</desc>
+                <binding>
+                        <condition>
+                                <not>
+                                        <property>/input/x360/shifted</property>
+                                </not>
+                        </condition>
+                        <command>nasal</command>
+                        <script><![CDATA[
+                                controls.gearToggle();
+                        ]]></script>
+                </binding>
+                <binding>
+                        <condition>
+                                <property>/input/x360/shifted</property>
+                        </condition>
+                        <command>nasal</command>
+                        <script><![CDATA[
+                                controls.applyParkingBrake(1);
+                        ]]></script>
+                </binding>
+        </button>
+        <!-- A X B Y -->
+        <button n="0">
+                <desc>A - elevator trim up</desc>
+                <repeatable type="bool">true</repeatable>
+                <binding>
+                        <condition>
+                                <not>
+                                        <property>/input/x360/shifted</property>
+                                </not>
+                        </condition>
+                        <command>property-adjust</command>
+                        <property>/controls/flight/elevator-trim</property>
+                        <step type="double">-0.001</step>
+                </binding>
+                <binding>
+                        <condition>
+                                <property>/input/x360/shifted</property>
+                        </condition>
+                        <command>property-adjust</command>
+                        <property>/controls/flight/elevator-trim</property>
+                        <step type="double">-0.01</step>
+                </binding>
+        </button>
+        <button n="2">
+                <desc>X - elevator trim down</desc>
+                <repeatable type="bool">true</repeatable>
+                <binding>
+                        <condition>
+                                <not>
+                                        <property>/input/x360/shifted</property>
+                                </not>
+                        </condition>
+                        <command>property-adjust</command>
+                        <property>/controls/flight/elevator-trim</property>
+                        <step type="double">0.001</step>
+                </binding>
+                <binding>
+                        <condition>
+                                <property>/input/x360/shifted</property>
+                        </condition>
+                        <command>property-adjust</command>
+                        <property>/controls/flight/elevator-trim</property>
+                        <step type="double">0.01</step>
+                </binding>
+        </button>
+        <button n="1">
+                <desc>B - right brake</desc>
+                <binding>
+                        <command>property-assign</command>
+                        <property>/controls/gear/brake-right</property>
+                        <value type="double">1</value>
+                </binding>
+                <mod-up>
+                        <binding>
+                                <command>property-assign</command>
+                                <property>/controls/gear/brake-right</property>
+                                <value type="double">0</value>
+                        </binding>
+                </mod-up>
+        </button>
+        <button n="3">
+                <desc>Y - left brake</desc>
+                <binding>
+                        <command>property-assign</command>
+                        <property>/controls/gear/brake-left</property>
+                        <value type="double">1</value>
+                </binding>
+                <mod-up>
+                        <binding>
+                                <command>property-assign</command>
+                                <property>/controls/gear/brake-left</property>
+                                <value type="double">0</value>
+                        </binding>
+                </mod-up>
+        </button>
+        <!-- Back Xbox Start -->
+        <button n="6">
+                <desc>Back - open autopilot</desc>
+                <binding>
+                        <condition>
+                                <not>
+                                        <property>/input/x360/shifted</property>
+                                </not>
+                        </condition>
+                        <command>dialog-show</command>
+                        <dialog-name>autopilot</dialog-name>
+                </binding>
+                <binding>
+                        <condition>
+                                <property>/input/x360/shifted</property>
+                        </condition>
+                        <command>dialog-close</command>
+                        <dialog-name>autopilot</dialog-name>
+                </binding>
+        </button>
+        <button n="8">
+                <desc>Xbox - cycle HUD</desc>
+                <binding>
+                        <command>nasal</command>
+                        <script><![CDATA[
+                                aircraft.HUD.cycle_color();
+                        ]]></script>
+                </binding>
+        </button>
+        <button n="7">
+                <desc>Start - open map</desc>
+                <binding>
+                        <condition>
+                                <not>
+                                        <property>/input/x360/shifted</property>
+                                </not>
+                        </condition>
+                        <command>dialog-show</command>
+                        <dialog-name>map</dialog-name>
+                </binding>
+                <binding>
+                        <condition>
+                                <property>/input/x360/shifted</property>
+                        </condition>
+                        <command>dialog-close</command>
+                        <dialog-name>map</dialog-name>
+                </binding>
+        </button>
+</PropertyList>
