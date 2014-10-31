@@ -12,10 +12,10 @@ Nasal library is used.
 
 ### Windows
 
-2. Copy `windows/x360.xml` to `$FG_ROOT\\Input\\Joysticks\\`. Delete (or
+2. Copy `windows/x360.xml` to `$FG_ROOT\Input\Joysticks\`. Delete (or
    change the file extension of) the default configuration at
-   `$FG_ROOT\\Input\\Joysticks\\Microsoft\\xbox-360-controller.xml`.
-3. Copy `windows/x360.nas` to `$FG_ROOT\\Nasal\\`.
+   `$FG_ROOT\Input\Joysticks\Microsoft\xbox-360-controller.xml`.
+3. Copy `windows/x360.nas` to `$FG_ROOT\Nasal\`.
 
 ### Linux
 
