@@ -39,16 +39,6 @@
         <axis n="4">
                 <desc>Right thumbstick lateral - rudder</desc>
                 <dead-band type="double">0.1</dead-band>
-                <!--binding>
-                        <condition>
-                                <not>
-                                        <property>/input/x360/shifted</property>
-                                </not>
-                        </condition>
-                        <command>property-scale</command>
-                        <property>/controls/flight/rudder</property>
-                        <factor type="double">1</factor>
-                </binding-->
                 <binding>
                         <condition>
                                 <property>/input/x360/shifted</property>
