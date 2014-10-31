@@ -1,3 +1,6 @@
+# Copyright (C) 2014 Ryan Young
+# Public domain.
+
 var THROTTLE_FACTOR = 2.2;
 var THROTTLE_DEADBAND = 0.3;
 var VIEW_FACTOR = 2;
