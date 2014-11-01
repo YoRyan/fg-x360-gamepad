@@ -6,6 +6,9 @@ it supports Windows *and* Linux, and it contains some cool extra bindings that
 make use of the thumbsticks and bumpers. For this extra functionality, a special
 Nasal library is used.
 
+Note that this configuration has only been tested with a wired controller. It
+might work with a wireless one with some tweaks.
+
 ## Install
 
 1. Clone this repository.
