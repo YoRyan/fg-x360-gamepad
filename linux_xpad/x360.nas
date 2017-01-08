@@ -21,6 +21,15 @@ var _updateThrottle = func () {
                 var delta = -math.pow(metrics.throttle_axis, 3) *
                                 getprop("/sim/time/delta-realtime-sec") * THROTTLE_FACTOR;
                 var thr = {};
+				
+				# c172p uses controls/engines/current-engine/throttle
+				var old_value = getprop("/controls/engines/current-engine/throttle");
+				if(old_value != nil) {
+					var new_value = delta + old_value;
+					setprop("/controls/engines/current-engine/throttle", new_value);
+				}
+				# end c172p specific block
+				
                 foreach (var eng; controls.engines) {
                         if (eng.selected.getBoolValue()) {
                                 thr = eng.controls.getNode("throttle", 1);
